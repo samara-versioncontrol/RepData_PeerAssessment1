@@ -7,7 +7,8 @@ output:
 
 
 ## Loading and preprocessing the data
-```{r load_data, echo=TRUE}
+
+``` r
 if(!file.exists("activity.csv")){
     unzip("activity.zip")
 }
@@ -24,7 +25,11 @@ hist(steps_per_day$steps,
      xlab = "Steps per Day", 
      col = "darkgreen", 
      breaks = 20)
+```
 
+![](PA1_template_files/figure-html/load_data-1.png)<!-- -->
+
+``` r
 mean_steps <- mean(steps_per_day$steps)
 median_steps <- median(steps_per_day$steps)
 
@@ -38,7 +43,11 @@ plot(steps_per_interval$interval, steps_per_interval$steps,
      xlab = "5-Minute Interval", 
      ylab = "Average Number of Steps",
      main = "Average Daily Activity Pattern")
+```
 
+![](PA1_template_files/figure-html/load_data-2.png)<!-- -->
+
+``` r
 max_interval <- steps_per_interval[which.max(steps_per_interval$steps), ]
 
 ## Imputing missing values
@@ -62,7 +71,11 @@ hist(imputed_steps_per_day$steps,
      xlab = "Steps per Day", 
      col = "purple", 
      breaks = 20)
+```
 
+![](PA1_template_files/figure-html/load_data-3.png)<!-- -->
+
+``` r
 mean_imputed <- mean(imputed_steps_per_day$steps)
 median_imputed <- median(imputed_steps_per_day$steps)
 
@@ -84,3 +97,6 @@ xyplot(steps ~ interval | day_type,
        xlab = "Interval", 
        ylab = "Number of steps",
        main = "Comparison of Activity: Weekdays vs. Weekends")
+```
+
+![](PA1_template_files/figure-html/load_data-4.png)<!-- -->
